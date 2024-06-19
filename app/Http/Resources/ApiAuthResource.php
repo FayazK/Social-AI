@@ -10,6 +10,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class ApiAuthResource extends JsonResource
 {
+    public static $wrap = 'user';
+
     /**
      * Transform the resource into an array.
      *
@@ -17,7 +19,10 @@ class ApiAuthResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'name' => $this->name,
+            'email' => $this->email,
+        ];
     }// toArray
 
 }// ApiAuthResource

@@ -26,7 +26,7 @@ class AuthController extends Controller
         $user = $request->user();
         $token = $user->createToken('app')->plainTextToken;
 
-        return ApiAuthResource::make(['user' => $user, 'token' => $token]);
+        return ApiAuthResource::make($user)->additional(['token'=>$token]);
     }// login
 
 }// AuthController
